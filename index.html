@@ -5,13 +5,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="css/index.css" />
         <script src="js/index.js" defer></script>
-        <title>cekBOM</title>
-        <title>Document</title>
+        <title>DarBOM</title>
     </head>
     <body>
-        <h1>cekBOM</h1>
-        <span id="status"></span>
-        <button id="mulailagi"></button>
+        <h1>DarBOM</h1>
+        <div class="perhitungan">
+            <div class="div">
+                <p>Nilai</p>
+                <span id="skor"></span>
+            </div>
+            <div class="div">
+                <p>Win</p>
+                <span id="win"></span>
+            </div>
+        </div>
         <div class="kotak-permainan">
             <div class="kartu-permainan"></div>
             <div class="kartu-permainan"></div>
@@ -23,6 +30,9 @@
             <div class="kartu-permainan"></div>
             <div class="kartu-permainan"></div>
         </div>
-        <span id="skor"></span>
+        <div class="kondisi">
+            <span id="status"></span>
+            <button id="mulailagi"></button>
+        </div>
     </body>
 </html>
