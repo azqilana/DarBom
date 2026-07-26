@@ -6,8 +6,13 @@
   box-sizing: border-box;
   text-align: center;
 }
-imv{
-  width: 50px;
+body{
+  display:flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  height: 90vh;
 }
 .kotak-permainan{
   display: grid;
@@ -38,4 +43,26 @@ imv{
   font-size:3rem;
   line-height: 100px;
   font-weight: 800;
+}
+#status{
+  display:inline-block;
+  padding: 10px;
+  margin:10px auto;
+  border-radius:10px;
+}
+#mulailagi{
+  opacity: 0;
+  border:2px solid yellow;
+  background: rgba(223,223,32,1);
+  padding: 10px;
+  margin:10px auto;
+  border-radius:10px;
+}
+.kalah{
+  border:2px solid red;
+  background: rgba(255,0,0,0.5)
+}
+.menang{
+  border:2px solid green;
+  background: rgba(0,255,0,0.5)
 }
