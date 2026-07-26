@@ -28,14 +28,9 @@ function bukanBom(target, indeks) {
   target.setAttribute("data-open", `op${indeks}`);
   const kartuBagus = document.querySelectorAll("[data-open]");
   nilai = nilai + 1;
+  skor.textContent = nilai;
   if (kartuBagus.length === kartu.length - 1) {
-    kondisi.style.zIndex = "1";
-    kondisi.style.opacity = "1";
-    status.classList.add("menang");
-    status.textContent = "Selamat Kamu menang";
-    mulaiLagi.textContent = "Mulai Lagi";
-    mulaiLagi.style.opacity = "1";
-    win = win + 1;
+    return "menang";
   }
 }
 function reset() {
@@ -43,6 +38,7 @@ function reset() {
     card.style.pointerEvents = "auto";
     card.removeAttribute("data-open");
     card.style.backgroundImage = "url(../media/backcard.webp)";
+    card.style.transform = "none";
   });
   status.classList.remove("kalah");
   status.classList.remove("menang");
@@ -55,18 +51,33 @@ function reset() {
   nilai = 0;
   skor.textContent = nilai;
 }
+function Menang() {
+  kondisi.style.zIndex = "1";
+  kondisi.style.opacity = "1";
+  status.classList.add("menang");
+  status.textContent = "Selamat Kamu menang";
+  mulaiLagi.textContent = "Mulai Lagi";
+  mulaiLagi.style.opacity = "1";
+  win = win + 1;
+  menang.textContent = win;
+}
 mulaiLagi.addEventListener("click", () => reset());
 kartu.forEach((card, indeks) => {
+  let winning;
   card.addEventListener("click", (e) => {
-    if (indeks === Bom) {
-      iniBom(e.target);
-    } else {
-      bukanBom(e.target, indeks);
-    }
+    e.target.style.transform = "rotateY(180deg)";
+    setTimeout(() => {
+      if (indeks === Bom) {
+        iniBom(e.target);
+      } else {
+        winning = bukanBom(e.target, indeks);
+        if (winning) {
+          Menang();
+        }
+      }
+    }, 500);
     e.target.style.pointerEvents = "none";
-    e.target.style.rotateX = "180deg";
-    e.target.style.transition = "transform 0.8s";
-    skor.textContent = nilai;
-    menang.textContent = win;
   });
+  menang.textContent = win;
+  skor.textContent = nilai;
 });
