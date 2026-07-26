@@ -4,7 +4,7 @@ const status = document.querySelector("#status");
 const mulaiLagi = document.querySelector("#mulailagi");
 const menang = document.querySelector("#win");
 const kondisi = document.querySelector(".kondisi");
-console.log(kartu);
+
 let Bom = acak();
 let nilai = 0;
 let win = 0;
@@ -64,6 +64,8 @@ kartu.forEach((card, indeks) => {
       bukanBom(e.target, indeks);
     }
     e.target.style.pointerEvents = "none";
+    e.target.style.rotateX = "180deg";
+    e.target.style.transition = "transform 0.8s";
     skor.textContent = nilai;
     menang.textContent = win;
   });

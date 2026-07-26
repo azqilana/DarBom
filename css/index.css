@@ -10,6 +10,11 @@
 h1{
   position: absolute;
   top:10px;
+  background:grey;
+  outline: 3px solid red;
+  color: white;
+  padding:10px;
+  border-radius:10px;
 }
 body{
   display:flex;
@@ -19,6 +24,11 @@ body{
   flex-direction: column;
   height: 80vh;
   background:whitesmoke;
+}
+strong{
+  text-shadow: 5px 2px 0 red;
+  font-weight:900;
+  color:black;
 }
 .kotak-permainan{
   display: grid;
@@ -35,8 +45,8 @@ body{
   width: 75px;
   height: 100px;
   background: url('../media/backcard.webp') no-repeat center center / cover;
-  border-radius: 10px;
-  border:5px solid rgb(0,100,0);
+  border-radius: 5px;
+  border:3px solid rgb(0,100,0);
 }
 .perhitungan{
   padding: 10px;
@@ -71,24 +81,24 @@ body{
 #mulailagi{
   opacity: 0;
   border:2px solid yellow;
-  background: rgba(223,223,32,1);
+  background: rgb(223,223,32);
   padding: 10px;
   margin:10px auto;
   border-radius:10px;
   font-size:1.5rem;
   font-weight:bold;
 }
-.div p{
+.kotak p{
   font-weight:900;
   font-size:1.5rem;
 }
 .kalah{
   border:2px solid red;
-  background: rgba(255,0,0,0.5)
+  background: rgb(255,0,0)
 }
 .menang{
   border:2px solid green;
-  background: rgba(0,255,0,0.5)
+  background: rgb(0,255,0)
 }
 .kondisi{
   width:95vw;
