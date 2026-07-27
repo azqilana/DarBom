@@ -1,121 +1,212 @@
-*{
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  text-decoration: none;
-  box-sizing: border-box;
-  text-align: center;
-  font-family: sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: sans-serif;
 }
-h1{
-  position: absolute;
-  top:10px;
-  background:grey;
-  outline: 3px solid red;
-  color: white;
-  padding:10px;
-  border-radius:10px;
+body {
+    background: gold;
+    overflow: hidden;
 }
-body{
-  display:flex;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  flex-direction: column;
-  height: 80vh;
-  background:darkgreen;
+h1 {
+    position: absolute;
+    top: 15px;
+    background: grey;
+    outline: 3px solid whitesmoke;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow:
+        inset -5px -5px 15px darkgrey,
+        inset 5px 5px 15px whitesmoke;
 }
-strong{
-  text-shadow: 5px 2px 0 red;
-  font-weight:900;
-  color:black;
+main {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    height: 95vh;
+    background: darkgreen;
+    background-image: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.2) 5px,
+        transparent 5px
+    );
+    outline: 13px solid saddlebrown;
+    border-radius: 2px;
+    background-size: 20px 20px;
+    box-shadow:
+        inset 5px 5px 15px rgba(0, 0, 0, 0.6),
+        inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+        0 10px 30px rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    margin: 10px 20px;
+    position: relative;
+    top: 10px;
 }
-.kotak-permainan{
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap:10px;
-  width: 300px;
-  background:ghostwhite;
-  padding: 10px;
-  margin:20px auto;
-  border-radius:10px;
-  outline: 5px solid yellowgreen;
-  box-shadow: inset 5px 5px 15px rgba(0,0,0,0.6), inset -5px -5px 15px rgba(255,255,255,0.1);
+strong {
+    text-shadow: 5px 2px 0 red;
+    font-weight: 900;
+    color: black;
 }
-.kartu-permainan{
-  margin:1px auto;
-  width: 75px;
-  height: 100px;
-  background: url('../media/backcard.webp') no-repeat center center / cover;
-  border-radius: 3px;
-  outline:3px solid rgb(0,100,0);
-  transition: transform 0.8s;
+.kotak-permainan {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 300px;
+    background: ghostwhite;
+    padding: 10px;
+    margin: 20px auto;
+    border-radius: 10px;
+    outline: 5px solid yellowgreen;
+    box-shadow:
+        inset 5px 5px 15px rgba(0, 0, 0, 0.6),
+        inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+        0 10px 30px rgba(0, 0, 0, 0.8);
 }
-.perhitungan{
-  padding: 10px;
-  margin:15px auto;
-  display:flex;
-  gap:10px;
-  border:2px solid seagreen;
-  border-radius:10px;
-  background:greenyellow;
-  position:relative;
-  top:25px;
-  box-shadow: inset -5px -5px 15px grey, inset 5px 5px 15px rgba(255,255,255,0.2);
+.kartu-permainan {
+    margin: 1px auto;
+    width: 75px;
+    height: 100px;
+    background: url("../media/backcard.webp") no-repeat center center / cover;
+    border-radius: 3px;
+    outline: 3px solid rgb(0, 100, 0);
+    transition: transform 0.8s;
 }
-#skor,#win{
-  width:100px;
-  aspect-ratio: 1/1;
-  background: whitesmoke;
-  border:2px solid blue;
-  display: inline-block;
-  border-radius:10px;
-  font-size:3rem;
-  line-height: 100px;
-  font-weight: 800;
+.perhitungan {
+    width: 300px;
+    padding: 10px;
+    margin: 15px auto;
+    display: flex;
+    gap: 10px;
+    border: 2px solid seagreen;
+    border-radius: 10px;
+    background: greenyellow;
+    position: absolute;
+    top: 90px;
+    justify-content: center;
+    align-items: center;
+    box-shadow:
+        inset -5px -5px 10px #6b9e00,
+        inset 5px 5px 10px #d4ff66,
+        0 10px 30px rgba(0, 0, 0, 0.8);
 }
-#status{
-  display:inline-block;
-  padding: 10px;
-  margin:10px auto;
-  border-radius:10px;
-  font-size:1.5rem;
-  font-weight:bold;
+#skor,
+#win {
+    width: 100px;
+    height: 50px;
+    background: whitesmoke;
+    border: 2px solid blue;
+    display: inline-block;
+    border-radius: 10px;
+    font-size: 2rem;
+    line-height: 50px;
+    font-weight: 800;
 }
-#mulailagi{
-  opacity: 0;
-  border:2px solid yellow;
-  background: rgb(223,223,32);
-  padding: 10px;
-  margin:10px auto;
-  border-radius:10px;
-  font-size:1.5rem;
-  font-weight:bold;
+#status {
+    display: inline-block;
+    padding: 10px;
+    margin: 10px auto;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
-.kotak p{
-  font-weight:900;
-  font-size:1.5rem;
+#mulailagi {
+    opacity: 0;
+    border: 2px solid yellow;
+    background: rgb(223, 223, 32);
+    padding: 10px;
+    margin: 10px auto;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
-.kalah{
-  border:2px solid red;
-  background: rgb(255,0,0)
+.kotak p {
+    font-weight: 900;
+    font-size: 1.5rem;
 }
-.menang{
-  border:2px solid green;
-  background: rgb(0,255,0)
+.kalah {
+    border: 2px solid red;
+    background: rgb(255, 0, 0);
 }
-.kondisi{
-  width:400px;
-  height:80vh;
-  display: flex;
-  justify-content: center;
-  align-items:center;
-  flex-direction:column;
-  background:rgba(255,250,250,0.5);
-  outline: 3px solid yellowgreen;
-  border-radius:10px;
-  position: absolute;
-  top:77px;
-  z-index: -1;
-  opacity:0;
+.menang {
+    border: 2px solid green;
+    background: rgb(0, 255, 0);
+}
+.kondisi {
+    width: 400px;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(255, 250, 250, 0.5);
+    outline: 3px solid yellowgreen;
+    border-radius: 10px;
+    position: absolute;
+    top: 77px;
+    z-index: -1;
+    opacity: 0;
+}
+.bantuan {
+    width: 300px;
+    display: grid;
+    gap: 10px;
+    background: greenyellow;
+    outline: 2px solid greenyellow;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow:
+        inset -5px -5px 10px #6b9e00,
+        inset 5px 5px 10px #d4ff66,
+        0 10px 30px rgba(0, 0, 0, 0.8);
+    position: absolute;
+    bottom: 55px;
+}
+.bantuan h3 {
+    padding: 10px;
+    color: white;
+    background: green;
+    font-size: 2rem;
+    border-radius: 5px;
+    box-shadow:
+        inset -8px -8px 20px rgba(0, 0, 0, 0.5),
+        inset 8px 8px 20px rgba(255, 255, 255, 0.3);
+}
+.tombol_bantuan {
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly;
+}
+.tombol {
+    display: inline-block;
+    padding: 20px;
+    outline: 2px solid yellowgreen;
+    border-radius: 15px;
+    background: grey;
+    box-shadow:
+        inset -5px -5px 15px darkgrey,
+        inset 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+.help-blink {
+    animation: blink 1s;
+    animation-iteration-count: 10;
+}
+@keyframes blink {
+    0% {
+        outline: 10px solid red;
+    }
+    25% {
+        outline: 10px solid red;
+    }
+    25% {
+        outline: 10px solid greenyellow;
+    }
+    100% {
+        outline: 10px solid greenyellow;
+    }
 }

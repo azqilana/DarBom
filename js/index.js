@@ -4,12 +4,13 @@ const status = document.querySelector("#status");
 const mulaiLagi = document.querySelector("#mulailagi");
 const menang = document.querySelector("#win");
 const kondisi = document.querySelector(".kondisi");
-
-let Bom = acak();
+const tombolBantuan = document.querySelectorAll(".tombol");
+let kartuTerpilih;
+let Bom = acak(kartu.length);
 let nilai = 0;
 let win = 0;
-function acak() {
-  return Math.floor(Math.random() * kartu.length);
+function acak(panjang) {
+  return Math.floor(Math.random() * panjang);
 }
 function iniBom(target) {
   target.style.backgroundImage = "url(../media/Bom.webp)";
@@ -63,6 +64,7 @@ function Menang() {
 }
 mulaiLagi.addEventListener("click", () => reset());
 kartu.forEach((card, indeks) => {
+  card.setAttribute("data-i", `kartu-${indeks + 1}`);
   let winning;
   card.addEventListener("click", (e) => {
     e.target.style.transform = "rotateY(180deg)";
@@ -80,4 +82,27 @@ kartu.forEach((card, indeks) => {
   });
   menang.textContent = win;
   skor.textContent = nilai;
+});
+
+tombolBantuan.forEach((btn, indeks) => {
+  function cekTombol(tbl) {
+    return btn.classList.contains(tbl);
+  }
+
+  btn.addEventListener("click", () => {
+    const belumBuka = document.querySelectorAll(
+      ".kartu-permainan:not([data-open])",
+    );
+    kartuTerpilih = [...belumBuka];
+    kartuTerpilih = kartuTerpilih.filter((kT) => {
+      const cekBom = kT.getAttribute("data-i");
+      const bukanBom = cekBom !== `kartu-${Bom + 1}`;
+      return bukanBom;
+    });
+    const cekTerpilih = acak(kartuTerpilih.length);
+    kartuTerpilih = kartuTerpilih[cekTerpilih];
+    if (cekTombol("tanda")) {
+      kartuTerpilih.classList.add("help-blink");
+    }
+  });
 });
