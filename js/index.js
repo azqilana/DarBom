@@ -48,7 +48,7 @@ function reset() {
   mulaiLagi.style.opacity = "0";
   kondisi.style.zIndex = "-1";
   kondisi.style.opacity = "0";
-  Bom = acak();
+  Bom = acak(kartu.length);
   nilai = 0;
   skor.textContent = nilai;
 }
@@ -97,6 +97,8 @@ tombolBantuan.forEach((btn, indeks) => {
     kartuTerpilih = kartuTerpilih.filter((kT) => {
       const cekBom = kT.getAttribute("data-i");
       const bukanBom = cekBom !== `kartu-${Bom + 1}`;
+      const iniBom = cekBom === `kartu-${Bom + 1}`;
+      console.log(iniBom + ` kartu-${Bom + 1}`);
       return bukanBom;
     });
     const cekTerpilih = acak(kartuTerpilih.length);
