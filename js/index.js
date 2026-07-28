@@ -15,6 +15,41 @@ let win = 0;
 let namaPlayer = "";
 let highscore = 0;
 
+// === Audio ===
+const audioFlip = new Audio("../media/suara/flipcard.mp3");
+const audioBom = new Audio("../media/suara/Bom.mp3");
+const audioWin1 = new Audio("../media/suara/win1.mp3");
+const audioWin2 = new Audio("../media/suara/win2.mp3");
+const audioLose1 = new Audio("../media/suara/kalah1.mp3");
+const audioLose2 = new Audio("../media/suara/kalah2.mp3");
+
+function suaraFlip() {
+  audioFlip.currentTime = 0;
+  audioFlip.play();
+}
+
+function suaraBom() {
+  audioBom.volume = 0.4;
+  audioBom.currentTime = 0;
+  audioBom.play();
+}
+
+function suaraMenang() {
+  audioWin1.currentTime = 0;
+  audioWin1.play();
+  setTimeout(() => {
+    audioWin2.currentTime = 0;
+    audioWin2.play();
+  }, 600);
+}
+function suaraKalah() {
+  audioLose1.currentTime = 0;
+  audioLose1.play();
+  setTimeout(() => {
+    audioLose2.currentTime = 0;
+    audioLose2.play();
+  }, 600);
+}
 // === Utility ===
 function acak(panjang) {
   return Math.floor(Math.random() * panjang);
@@ -34,7 +69,7 @@ function blinkKelas(elemen, kelas, durasi = 500) {
 }
 
 function tampilKondisi(pesanStatus, kelasStatus, pesanTombol) {
-  onClass(kondisi, "muncul");
+  onClass(kondisi, "muncul", kelasStatus);
   onClass(status, kelasStatus);
   status.textContent = pesanStatus;
   mulaiLagi.textContent = pesanTombol;
@@ -76,7 +111,7 @@ function buatModal() {
   function konfirmasiNama() {
     const nama = inputNama.value.trim();
     if (!nama) return;
-    namaPlayer = nama;
+    namaPlayer = nama || "Player";
     simpanData();
     document.body.removeChild(overlay);
     updateNama();
@@ -90,7 +125,7 @@ function buatModal() {
 
 function updateNama() {
   const elNama = document.querySelector("#nama-player");
-  if (elNama) elNama.textContent = namaPlayer;
+  if (elNama) elNama.textContent = namaPlayer || "Nama Anda";
 }
 
 function updateHighscore() {
@@ -119,6 +154,10 @@ function cekBom(elemen) {
 }
 
 function iniBom(target) {
+  suaraBom();
+  setTimeout(() => {
+    suaraKalah();
+  }, 1000);
   target.style.backgroundImage = "url(../media/Bom.webp)";
   kartu.forEach((card) => onClass(card, "kunci"));
   nilai = nilai - 1;
@@ -146,6 +185,7 @@ function bukanBom(target, indeks) {
 }
 
 function Menang() {
+  suaraMenang();
   win = win + 1;
   if (nilai > highscore) {
     highscore = nilai;
@@ -165,13 +205,14 @@ function reset() {
   status.textContent = "";
   mulaiLagi.textContent = " ";
   offClass(mulaiLagi, "muncul");
-  offClass(kondisi, "muncul");
+  offClass(kondisi, "muncul", "kalah", "menang");
   Bom = acak(kartu.length);
   updateSkor();
 }
 
 // === Handler Kartu ===
 function handleKlikKartu(e, indeks) {
+  suaraFlip();
   onClass(e.target, "flip");
   setTimeout(() => {
     if (!cekBom(e.target)) {
