@@ -300,8 +300,8 @@ function handleLihat() {
       setTimeout(() => {
         tutupKartu(card);
         offClass(card, "kunci");
-      }, 500);
-    }, 500);
+      }, 200);
+    }, 200);
   });
 }
 
@@ -316,8 +316,8 @@ function handleLihatBom() {
     setTimeout(() => {
       tutupKartu(kartuBom);
       offClass(kartuBom, "kunci");
-    }, 500);
-  }, 500);
+    }, 200);
+  }, 200);
 }
 
 function handleKlue() {
