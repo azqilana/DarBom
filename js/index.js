@@ -15,6 +15,10 @@ let win = 0;
 let namaPlayer = "";
 let highscore = 0;
 
+// === Limit Bantuan ===
+const limitAwal = { tanda: 5, lihat: 2, kilat: 2, klue: 6 };
+let limitSisa = { ...limitAwal };
+
 // === Audio ===
 const audioFlip = new Audio("../media/suara/flipcard.mp3");
 const audioBom = new Audio("../media/suara/Bom.mp3");
@@ -160,7 +164,7 @@ function iniBom(target) {
   }, 1000);
   target.style.backgroundImage = "url(../media/Bom.webp)";
   kartu.forEach((card) => onClass(card, "kunci"));
-  nilai = nilai - 1;
+  nilai = Math.floor(nilai / 2);
   tampilKondisi("Yah Kamu Kalah", "kalah", "Coba Lagi");
 }
 
@@ -207,6 +211,7 @@ function reset() {
   offClass(mulaiLagi, "muncul");
   offClass(kondisi, "muncul", "kalah", "menang");
   Bom = acak(kartu.length);
+  resetLimit();
   updateSkor();
 }
 
@@ -232,6 +237,37 @@ function initKartu() {
   });
   updateSkor();
   updateWin();
+}
+
+// === Limit Bantuan UI ===
+function updateTampilLimit() {
+  tombolBantuan.forEach((btn) => {
+    let kelas = null;
+    if (btn.classList.contains("tanda")) kelas = "tanda";
+    else if (btn.classList.contains("lihat")) kelas = "lihat";
+    else if (btn.classList.contains("kilat")) kelas = "kilat";
+    else if (btn.classList.contains("klue")) kelas = "klue";
+    if (!kelas) return;
+
+    let badge = btn.querySelector(".limit-badge");
+    if (!badge) {
+      badge = document.createElement("span");
+      badge.className = "limit-badge";
+      btn.appendChild(badge);
+    }
+    badge.textContent = limitSisa[kelas];
+
+    if (limitSisa[kelas] <= 0) {
+      btn.classList.add("habis");
+    } else {
+      btn.classList.remove("habis");
+    }
+  });
+}
+
+function resetLimit() {
+  limitSisa = { ...limitAwal };
+  updateTampilLimit();
 }
 
 // === Handler Bantuan ===
@@ -311,17 +347,27 @@ function handleKlue() {
 }
 
 function handleKlikBantuan(btn) {
+  let kelas = null;
+  if (btn.classList.contains("tanda")) kelas = "tanda";
+  else if (btn.classList.contains("lihat")) kelas = "lihat";
+  else if (btn.classList.contains("kilat")) kelas = "kilat";
+  else if (btn.classList.contains("klue")) kelas = "klue";
+  if (!kelas || limitSisa[kelas] <= 0) return;
+
+  limitSisa[kelas]--;
+  updateTampilLimit();
+
   kartuTerpilih = cariKartuAman();
-  if (btn.classList.contains("tanda") && kartuTerpilih) {
+  if (kelas === "tanda" && kartuTerpilih) {
     blinkKelas(kartuTerpilih, "help-blink");
   }
-  if (btn.classList.contains("lihat")) {
+  if (kelas === "lihat") {
     handleLihatBom();
   }
-  if (btn.classList.contains("kilat")) {
+  if (kelas === "kilat") {
     handleLihat();
   }
-  if (btn.classList.contains("klue")) {
+  if (kelas === "klue") {
     handleKlue();
   }
 }
@@ -341,6 +387,7 @@ function init() {
   updateSkor();
   updateWin();
   updateHighscore();
+  updateTampilLimit();
   if (!namaPlayer) {
     buatModal();
   } else {

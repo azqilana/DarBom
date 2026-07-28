@@ -320,6 +320,32 @@ strong {
         inset -3px -3px 8px rgba(0, 0, 0, 0.2),
         inset 3px 3px 8px rgba(255, 255, 255, 0.4);
 }
+.tombol {
+    position: relative;
+}
+.limit-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: red;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 900;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    pointer-events: none;
+}
+.tombol.habis {
+    opacity: 0.4;
+    cursor: not-allowed;
+    filter: grayscale(1);
+}
+
 @keyframes blink {
     0% {
         outline: 10px solid red;
