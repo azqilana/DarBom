@@ -264,7 +264,7 @@ function handleLihat() {
       setTimeout(() => {
         tutupKartu(card);
         offClass(card, "kunci");
-      }, 1500);
+      }, 500);
     }, 500);
   });
 }
