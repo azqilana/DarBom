@@ -44,15 +44,11 @@ function tampilKondisi(pesanStatus, kelasStatus, pesanTombol) {
 // === Storage ===
 function simpanData() {
   localStorage.setItem("darbom_nama", namaPlayer);
-  localStorage.setItem("darbom_skor", nilai);
-  localStorage.setItem("darbom_win", win);
   localStorage.setItem("darbom_highscore", highscore);
 }
 
 function muatData() {
   namaPlayer = localStorage.getItem("darbom_nama") || "";
-  nilai = parseInt(localStorage.getItem("darbom_skor")) || 0;
-  win = parseInt(localStorage.getItem("darbom_win")) || 0;
   highscore = parseInt(localStorage.getItem("darbom_highscore")) || 0;
 }
 
@@ -125,7 +121,7 @@ function cekBom(elemen) {
 function iniBom(target) {
   target.style.backgroundImage = "url(../media/Bom.webp)";
   kartu.forEach((card) => onClass(card, "kunci"));
-  nilai = Math.floor(nilai / 2);
+  nilai = nilai - 1;
   tampilKondisi("Yah Kamu Kalah", "kalah", "Coba Lagi");
 }
 
