@@ -115,7 +115,7 @@ strong {
     font-size: 1.5rem;
     font-weight: bold;
 }
-#mulailagi {
+.mulailagi {
     opacity: 0;
     border: 2px solid yellow;
     background: rgb(223, 223, 32);
@@ -195,6 +195,121 @@ strong {
 .help-blink {
     animation: blink 1s;
     animation-iteration-count: 10;
+}
+.muncul {
+    z-index: 1;
+    opacity: 1;
+}
+
+.kunci {
+    pointer-events: none;
+}
+
+.flip {
+    transform: rotateY(180deg);
+}
+.bahaya {
+    outline: 3px solid red;
+}
+.highscore-box {
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    background: greenyellow;
+    padding: 8px 15px;
+    border-radius: 10px;
+    border: 2px solid seagreen;
+    box-shadow:
+        inset -5px -5px 10px #6b9e00,
+        inset 5px 5px 10px #d4ff66,
+        0 5px 15px rgba(0, 0, 0, 0.5);
+}
+.highscore-box p {
+    font-size: 0.9rem;
+    font-weight: 900;
+    color: darkgreen;
+}
+#highscore {
+    width: 50px;
+    height: 20px;
+    background: whitesmoke;
+    border: 2px solid blue;
+    display: inline-block;
+    border-radius: 10px;
+    font-size: 1rem;
+    line-height: 20px;
+    font-weight: 900;
+}
+.nama-player-box {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    background: greenyellow;
+    padding: 8px 20px;
+    border-radius: 10px;
+    border: 2px solid seagreen;
+    box-shadow:
+        inset -5px -5px 10px #6b9e00,
+        inset 5px 5px 10px #d4ff66,
+        0 5px 15px rgba(0, 0, 0, 0.5);
+}
+#nama-player {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: darkgreen;
+}
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.modal-nama {
+    background: greenyellow;
+    border-radius: 15px;
+    padding: 30px 25px;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    outline: 4px solid seagreen;
+    box-shadow:
+        inset -5px -5px 10px #6b9e00,
+        inset 5px 5px 10px #d4ff66,
+        0 10px 30px rgba(0, 0, 0, 0.8);
+}
+.modal-nama h2 {
+    font-size: 1.8rem;
+    color: darkgreen;
+    font-weight: 900;
+}
+.modal-nama input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid seagreen;
+    font-size: 1.2rem;
+    font-weight: bold;
+    outline: none;
+    text-align: center;
+}
+.modal-nama input:focus {
+    border-color: green;
+    box-shadow: 0 0 8px greenyellow;
+}
+.modal-nama button {
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid yellow;
+    background: rgb(223, 223, 32);
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow:
+        inset -3px -3px 8px rgba(0, 0, 0, 0.2),
+        inset 3px 3px 8px rgba(255, 255, 255, 0.4);
 }
 @keyframes blink {
     0% {
