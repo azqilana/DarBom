@@ -1,0 +1,20 @@
+{
+  "name": "darbom",
+  "short_name": "darbom",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FFD700",
+  "theme_color": "#FFD700",
+  "icons": [
+    {
+      "src": "./media/pp192.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "./media/pp512.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

@@ -26,6 +26,21 @@ const audioWin1 = new Audio("../media/suara/win1.mp3");
 const audioWin2 = new Audio("../media/suara/win2.mp3");
 const audioLose1 = new Audio("../media/suara/kalah1.mp3");
 const audioLose2 = new Audio("../media/suara/kalah2.mp3");
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("sw.js")
+      .then((registration) => {
+        console.log(
+          "ServiceWorker darbom berhasil terdaftar: ",
+          registration.scope,
+        );
+      })
+      .catch((err) => {
+        console.log("ServiceWorker darbom gagal terdaftar: ", err);
+      });
+  });
+}
 
 function suaraFlip() {
   audioFlip.currentTime = 0;
@@ -375,6 +390,22 @@ function handleKlikBantuan(btn) {
 function initBantuan() {
   tombolBantuan.forEach((btn) => {
     btn.addEventListener("click", () => handleKlikBantuan(btn));
+  });
+}
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("sw.js")
+      .then((registration) => {
+        console.log(
+          "ServiceWorker darbom berhasil terdaftar: ",
+          registration.scope,
+        );
+      })
+      .catch((err) => {
+        console.log("ServiceWorker darbom gagal terdaftar: ", err);
+      });
   });
 }
 
