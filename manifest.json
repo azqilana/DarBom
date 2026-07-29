@@ -1,7 +1,7 @@
 {
   "name": "darbom",
   "short_name": "darbom",
-  "start_url": "./index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#FFD700",
   "theme_color": "#FFD700",
